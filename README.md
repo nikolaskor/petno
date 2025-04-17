@@ -1,39 +1,68 @@
-# ShipFast — Javascript
+# Petno Norway
 
-Hey maker 👋 it's Marc from [ShipFast](https://shipfa.st/docs). Let's get your startup off the ground, FAST ⚡️
+A Cursor IDE–powered SaaS directory connecting ethical dog breeders with prospective puppy owners across Norway.
 
-<sub>**Watch/Star the repo to be notified when updates are pushed**</sub>
+---
 
-## Get Started
+## 📋 Table of Contents
 
-1. Follow the [Get Started Tutorial](https://shipfa.st/docs) to clone the repo and run your local server 💻
+- [Project Overview](#project-overview)  
+- [Built With](#built-with)  
+- [Getting Started](#getting-started)  
+  - [Prerequisites](#prerequisites)  
+  - [Installation](#installation)  
+  - [Environment Variables](#environment-variables)  
+- [Working in Cursor IDE](#working-in-cursor-ide)  
+- [Project Structure](#project-structure)  
+- [Available Scripts](#available-scripts)  
+- [Contributing](#contributing)  
+- [License](#license)  
 
-<sub>**Looking for the /pages router version?** Use this [documentation](https://shipfa.st/docs-old) instead</sub>
+---
 
-2. Follow the [Ship In 5 Minutes Tutorial](https://shipfa.st/docs/tutorials/ship-in-5-minutes) to learn the foundation and ship your app quickly ⚡️
+## Project Overview
 
-## Links
+**Petno Norway** is a modern, serverless directory and marketplace built with Next.js, Tailwind CSS, and Supabase. Using Cursor IDE’s AI‑powered tooling and this README as context, you can quickly scaffold features, navigate user flows, and maintain consistency across the codebase.
 
--   [📚 Documentation](https://shipfa.st/docs)
--   [📣 Updates](https://shipfast.beehiiv.com/)
--   [🧑‍💻 Discord](https://shipfa.st/dashboard)
--   [🥇 Leaderboard](https://shipfa.st/leaderboard)
+Core capabilities include:
 
-## Support
+- **Search & Filtering**  
+  Filter breeder profiles by breed, region, and availability.
+- **Breeder Onboarding**  
+  Profile management, litter scheduling, and contract templates.
+- **In‑App Messaging & Digital Contracts**  
+  Secure messaging and e‑signature workflows.
+- **Premium Boosts**  
+  Paid promotions via Stripe integration.
 
-Reach out at hello@shipfa.st
+---
 
-Let's ship it, FAST ⚡️
+## Built With
 
-\_
+- [Next.js](https://nextjs.org/) – React framework for server‑rendered pages  
+- [React](https://reactjs.org/) – Component‑based UI library  
+- [Tailwind CSS](https://tailwindcss.com/) – Utility‑first styling  
+- [Supabase](https://supabase.com/) – Postgres database & authentication  
+- [AuthJS (NextAuth)](https://next-auth.js.org/) – Authentication  
+- [Resend](https://resend.com/) – Email link delivery  
+- [Stripe](https://stripe.com/) – Billing & payments  
+- [21st.dev Magic MCP](https://21st.dev/) – UI block components  
+- [Cursor IDE](https://cursor.com/) – AI‑assisted code generation & navigation  
 
-**📈 Grow your startup with [DataFast](https://datafa.st?ref=shipfast_readme)**
+---
 
--   Analyze your traffic
--   Get insights on your customers
--   Make data-driven decisions
+## Getting Started
 
-ShipFast members get 30% OFF on all plans! 🎁
+### Prerequisites
 
-![datafast](https://github.com/user-attachments/assets/a6e78034-701a-49f1-a297-d33590f963be)
+- **Node.js** v18.x or higher  
+- **npm** or **Yarn**  
+- **Cursor IDE** account (workspace configured)  
+- **GitHub** account for repository hosting  
 
+### Installation
+
+1. **Clone the repository**  
+   ```bash
+   git clone git@github.com:your-username/petno.git
+   cd puppyfinder-norway

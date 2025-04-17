@@ -1,108 +1,101 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useState } from "react";
+import { ChevronDown } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 // <FAQ> component is a lsit of <Item> component
 // Just import the FAQ & add your FAQ content to the const faqList
 
 const faqList = [
   {
-    question: "What do I get exactly?",
-    answer: <div className="space-y-2 leading-relaxed">Loreum Ipseum</div>,
+    question: "How does the pet adoption process work?",
+    answer:
+      "Our platform connects you directly with verified breeders and shelters. You can browse available pets, view their profiles, and contact the breeder/shelter through our secure messaging system. Once you've found your perfect match, you can arrange a meetup and complete the adoption process.",
   },
   {
-    question: "Can I get a refund?",
-    answer: (
-      <p>
-        Yes! You can request a refund within 7 days of your purchase. Reach out
-        by email.
-      </p>
-    ),
+    question: "How do you verify breeders and shelters?",
+    answer:
+      "We have a rigorous verification process that includes checking licenses, conducting background checks, reviewing customer feedback, and verifying documentation. We also regularly monitor and update our verification system to ensure the highest standards of animal welfare.",
   },
   {
-    question: "I have another question",
-    answer: (
-      <div className="space-y-2 leading-relaxed">Cool, contact us by email</div>
-    ),
+    question: "What information is included in pet profiles?",
+    answer:
+      "Pet profiles include detailed information such as breed, age, gender, health records, vaccination history, temperament, and photos. Breeders and shelters can also add additional information about the pet's personality, training, and special needs.",
+  },
+  {
+    question: "Can I meet the pet before adopting?",
+    answer:
+      "Yes, absolutely! We encourage meetups before adoption. You can arrange to meet the pet at the breeder's/shelter's location or at a neutral location. This helps ensure that both you and the pet are a good match for each other.",
+  },
+  {
+    question: "What happens if there are health issues after adoption?",
+    answer:
+      "We work with breeders and shelters who provide health guarantees and proper documentation. If health issues arise, our platform facilitates communication between you and the breeder/shelter to resolve any concerns. We also provide resources and support throughout the process.",
+  },
+  {
+    question: "Is there a fee to use the platform?",
+    answer:
+      "We offer a free basic plan that allows you to browse and contact breeders/shelters. Our premium plans offer additional features like advanced search filters, priority messaging, and access to health records. Breeders and shelters have their own subscription plans for listing pets.",
   },
 ];
 
-const Item = ({ item }) => {
-  const accordion = useRef(null);
-  const [isOpen, setIsOpen] = useState(false);
-
+const FAQItem = ({ question, answer, isOpen, onClick }) => {
   return (
-    <li>
+    <div className="border-b">
       <button
-        className="relative flex gap-2 items-center w-full py-5 text-base font-semibold text-left border-t md:text-lg border-base-content/10"
-        onClick={(e) => {
-          e.preventDefault();
-          setIsOpen(!isOpen);
-        }}
-        aria-expanded={isOpen}
+        className="flex w-full items-center justify-between py-4 text-left"
+        onClick={onClick}
       >
-        <span
-          className={`flex-1 text-base-content ${isOpen ? "text-primary" : ""}`}
-        >
-          {item?.question}
-        </span>
-        <svg
-          className={`flex-shrink-0 w-4 h-4 ml-auto fill-current`}
-          viewBox="0 0 16 16"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <rect
-            y="7"
-            width="16"
-            height="2"
-            rx="1"
-            className={`transform origin-center transition duration-200 ease-out ${
-              isOpen && "rotate-180"
-            }`}
-          />
-          <rect
-            y="7"
-            width="16"
-            height="2"
-            rx="1"
-            className={`transform origin-center rotate-90 transition duration-200 ease-out ${
-              isOpen && "rotate-180 hidden"
-            }`}
-          />
-        </svg>
+        <span className="text-base font-semibold">{question}</span>
+        <ChevronDown
+          className={cn(
+            "h-5 w-5 text-muted-foreground transition-transform duration-200",
+            isOpen && "rotate-180"
+          )}
+        />
       </button>
-
       <div
-        ref={accordion}
-        className={`transition-all duration-300 ease-in-out opacity-80 overflow-hidden`}
-        style={
-          isOpen
-            ? { maxHeight: accordion?.current?.scrollHeight, opacity: 1 }
-            : { maxHeight: 0, opacity: 0 }
-        }
+        className={cn(
+          "grid transition-all duration-200",
+          isOpen ? "grid-rows-[1fr] pb-4" : "grid-rows-[0fr]"
+        )}
       >
-        <div className="pb-5 leading-relaxed">{item?.answer}</div>
+        <div className="overflow-hidden">
+          <p className="text-muted-foreground">{answer}</p>
+        </div>
       </div>
-    </li>
+    </div>
   );
 };
 
 const FAQ = () => {
-  return (
-    <section className="bg-base-200" id="faq">
-      <div className="py-24 px-8 max-w-7xl mx-auto flex flex-col md:flex-row gap-12">
-        <div className="flex flex-col text-left basis-1/2">
-          <p className="inline-block font-semibold text-primary mb-4">FAQ</p>
-          <p className="sm:text-4xl text-3xl font-extrabold text-base-content">
-            Frequently Asked Questions
-          </p>
-        </div>
+  const [openIndex, setOpenIndex] = useState(0);
 
-        <ul className="basis-1/2">
-          {faqList.map((item, i) => (
-            <Item key={i} item={item} />
+  return (
+    <section id="faq" className="py-24 bg-background">
+      <div className="container px-4 md:px-6">
+        <div className="flex flex-col items-center justify-center space-y-4 text-center mb-16">
+          <div className="space-y-2">
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+              Frequently Asked Questions
+            </h2>
+            <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+              Find answers to common questions about our pet adoption platform.
+            </p>
+          </div>
+        </div>
+        <div className="mx-auto max-w-3xl">
+          {faqList.map((item, index) => (
+            <FAQItem
+              key={index}
+              question={item.question}
+              answer={item.answer}
+              isOpen={openIndex === index}
+              onClick={() => setOpenIndex(openIndex === index ? -1 : index)}
+            />
           ))}
-        </ul>
+        </div>
       </div>
     </section>
   );
